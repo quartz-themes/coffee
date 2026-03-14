@@ -59,7 +59,10 @@ jobs:
       - name: Install Dependencies
         uses: nick-fields/retry@v3
         with:
-          command: npm i
+          command: |
+            npm ci
+            npx quartz plugin restore
+            npx quartz plugin update
           timeout_minutes: 3
           max_attempts: 3
           on_retry_command: |
